@@ -1,0 +1,2 @@
+# ShiftSync
+# React + TypeScript + Vite
