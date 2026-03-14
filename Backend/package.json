@@ -1,5 +1,5 @@
 {
-  "name": "edu-base-api",
+  "name": "shift-sync-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
