@@ -4,6 +4,7 @@ import { UserEntity } from "./src/persistences/users/user-schema";
 import { SkillEntity } from "./src/persistences/skills/skill-schema";
 import { LocationEntity } from "./src/persistences/locations/location-schema";
 import { UserLocationEntity } from "./src/persistences/users/user-location-schema";
+import { StaffAvailabilityEntity } from "./src/persistences/shifts/staff-availability-schema";
 
 dotenv.config();  
 const isProduction = process.env.NODE_ENV === "production";
@@ -37,7 +38,7 @@ const DBContext = {
         // synchronize: !isProduction,
         synchronize: true,
         logging: false,
-        entities: [UserEntity,LocationEntity,UserLocationEntity,SkillEntity],
+        entities: [UserEntity,LocationEntity,UserLocationEntity,SkillEntity,StaffAvailabilityEntity],
       });
 
       connection = await dataSource.initialize();
