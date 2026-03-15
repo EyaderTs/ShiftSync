@@ -62,13 +62,13 @@ const Dashboard = () => {
     let breadcrumbPath = '';
     pathSnippets.forEach((segment) => {
       breadcrumbPath += `${segment}`;
-      
+
       // Format segment name for display (capitalize first letter of each word)
       const segmentName = segment
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
-      
+
       items.push({
         title: segmentName,
         href: breadcrumbPath,
@@ -88,12 +88,9 @@ const Dashboard = () => {
 
   const grantAccess = (roles: string[]) => {
     if (roles && roles?.length > 0) {
-      const isAuthorized = roles.some((r) =>
-        userProfile?.data?.userRoles
-          ?.map((role: any) => role?.role?.key)
-          ?.includes(r)
-      );
-      if (!isAuthorized && userProfile?.data) {
+      // Check if user's single role is in the allowed roles array
+      const isAuthorized = roles.includes(user?.role || '');
+      if (!isAuthorized && user) {
         return false;
       } else {
         return true;
@@ -153,16 +150,16 @@ const Dashboard = () => {
             <div>
               <div
                 style={{ height: "100px", backgroundColor: "#FCFCFF" }}
-                className={`py-1 w-full flex justify-start border-r-2 shadow-lg shadow-fuchsia-200 border-gray-200 px-2  items-center font-bold text-2xl text-black`}
+                className={`py-1 w-full flex pl-6 justify-start border-r-2 shadow-lg shadow-fuchsia-200 border-gray-200 px-2  items-center font-bold text-2xl text-black`}
                 onClick={() => navigate("/")}
               >
-                {/* <span className={collapsed ? "hidden" : "block"}>EDU Budget</span>
-                <span className={collapsed ? "block text-base text-center justify-center items-center" : "hidden"}>Ease</span> */}
-                {collapsed ? (
+                <span className={collapsed ? "hidden" : "block"}>Shift Sync</span>
+                {/* <span className={collapsed ? "block text-base text-center justify-center items-center" : "hidden"}>Ease</span> */}
+                {/* {collapsed ? (
                   <Image src="/assets/images/logo-2.png" alt="logo-collapsed" width={200} preview={false} className="cursor-pointer" />
                 ) : (
                   <Image src="/assets/images/logo-1.png" alt="logo" width={300} preview={false} className="cursor-pointer" />
-                )}
+                )} */}
                 {/* <div className="text-xs text-gray-500 ml-1">{!collapsed && "Ease"}</div> */}
               </div>
 
@@ -178,12 +175,12 @@ const Dashboard = () => {
                 style={{ height: "calc(100vh - 161px)", backgroundColor: "#FCFCFF" }}
               />
             </div>
-            
+
             {/* User profile section at bottom of sidebar */}
             <div className="flex items-center justify-center" style={{ backgroundColor: "#FCFCFF" }}>
               <hr className="text-gray-200 w-full mx-6" />
             </div>
-            <div className={`border-r border-gray-200 p-3 ${collapsed ? "text-center" : "flex items-center gap-x-3"}`} style={{ backgroundColor: "#FCFCFF" }}>            
+            <div className={`border-r border-gray-200 p-3 ${collapsed ? "text-center" : "flex items-center gap-x-3"}`} style={{ backgroundColor: "#FCFCFF" }}>
               <Dropdown
                 menu={{
                   items: [
@@ -207,7 +204,7 @@ const Dashboard = () => {
                   <Avatar
                     style={{ backgroundColor: "#8B5CF6" }}
                     size="default"
-                    
+
                   >
                     {user?.firstName?.charAt(0)}
                   </Avatar>
@@ -241,9 +238,9 @@ const Dashboard = () => {
                 className="flex items-center pl-4 text-lg text-black font-semibold hover:cursor-pointer"
                 onClick={() => navigate("/")}
               >
-                {/* EDU Budget
-                <div className="text-xs text-gray-500 ml-1">Ease</div> */}
-                <Image src="/assets/images/logo-1.png" alt="logo" width={200} preview={false} className="cursor-pointer" />
+                Shift Sync
+
+                {/* <Image src="/assets/images/logo-1.png" alt="logo" width={200} preview={false} className="cursor-pointer" /> */}
               </div>
             }
           >
@@ -260,7 +257,7 @@ const Dashboard = () => {
                   className="font-semibold text-gray-600 overflow-auto"
                 />
               </div>
-              
+
               {/* User profile section at bottom of mobile drawer */}
               <div className="border-t border-gray-200 p-3 flex items-center space-x-2 gap-x-3">
                 <Avatar

@@ -11,6 +11,7 @@ import { TbMapDollar } from "react-icons/tb";
 import { NavigateFunction } from "react-router-dom";
 import { FaHandHoldingDollar, FaSackDollar } from "react-icons/fa6";
 import { IoAnalyticsSharp } from "react-icons/io5";
+import { AiOutlineClockCircle, AiOutlineCalendar } from "react-icons/ai";
 import { EnumRoles } from "../enum/app.enum";
 export const getMenuItems = (
   navigate: NavigateFunction,
@@ -31,7 +32,7 @@ export const getMenuItems = (
       key: "Skill",
       icon: <LuSchool size={iconSize} />,
       label: "Skill",
-      // roles: [EnumRoles.SuperAdmin],
+      roles: [EnumRoles.Admin, EnumRoles.Manager],
       onClick: () => {
         navigate("skills");
       },
@@ -41,7 +42,7 @@ export const getMenuItems = (
       key: "Location",
       icon: <FaSackDollar size={iconSize} />,
       label: "Location",
-      // roles: [EnumRoles.SuperAdmin],
+      roles: [EnumRoles.Admin, EnumRoles.Manager],
       onClick: () => {
         navigate("locations");
       },
@@ -50,16 +51,25 @@ export const getMenuItems = (
       key: "User",
       icon: <MdOutlinePersonOutline size={iconSize} />,
       label: "User",
-      // roles: [EnumRoles.SuperAdmin],
+      roles: [EnumRoles.Admin, EnumRoles.Manager],
       onClick: () => {
         navigate("users");
       },
     },
     {
+      key: "Shift",
+      icon: <AiOutlineCalendar size={iconSize} />,
+      label: "Shifts",
+      roles: [EnumRoles.Manager],
+      onClick: () => {
+        navigate("shifts");
+      },
+    },
+    {
       key: "Availability",
-      icon: <MdOutlinePersonOutline size={iconSize} />,
+      icon: <AiOutlineClockCircle size={iconSize} />,
       label: "My Availability",
-      // roles: [EnumRoles.SuperAdmin],
+      roles: [EnumRoles.Staff],
       onClick: () => {
         navigate("availability");
       },
