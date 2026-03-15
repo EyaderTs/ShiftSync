@@ -51,7 +51,7 @@ export const getMenuItems = (
       key: "User",
       icon: <MdOutlinePersonOutline size={iconSize} />,
       label: "User",
-      // roles: [EnumRoles.Admin, EnumRoles.Manager],
+      roles: [EnumRoles.Admin, EnumRoles.Manager],
       onClick: () => {
         navigate("users");
       },

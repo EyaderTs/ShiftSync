@@ -7,9 +7,9 @@ import { ItemGuard } from "@/shared/auth/component/auth-guard";
 export const UserRoute = {
   path: "users",
   element: (
-    // <ItemGuard roles={[EnumRoles.Admin, EnumRoles.Manager]}>
-    <UserListPage />
-    // </ItemGuard>
+    <ItemGuard roles={[EnumRoles.Admin, EnumRoles.Manager]}>
+      <UserListPage />
+    </ItemGuard>
   ),
   children: [
     { path: "edit/:id", element: <NewUserComponent editMode="detail" /> },
