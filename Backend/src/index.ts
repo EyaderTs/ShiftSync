@@ -28,7 +28,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use(Authenticate);
+// app.use(Authenticate);
 
 //import routs
 app.use("/api/users", userRoutes);
