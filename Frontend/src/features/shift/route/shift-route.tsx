@@ -9,9 +9,9 @@ export const ShiftRoute = {
     {
       index: true,
       element: (
-        // <ItemGuard roles={[EnumRoles.Manager, EnumRoles.SuperAdmin]}>
-        <ShiftListPage />
-        // </ItemGuard>
+        <ItemGuard roles={[EnumRoles.Manager]}>
+          <ShiftListPage />
+        </ItemGuard>
       ),
     },
     { path: "new", element: <NewShiftComponent editMode="new" /> },

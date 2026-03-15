@@ -8,9 +8,9 @@ import { EnumRoles } from "@/shared/constants/enum/app.enum";
 export const LocationRoute = {
   path: "locations",
   element: (
-    // <ItemGuard roles={[EnumRoles.Admin]}>
-    <LocationListPage />
-    // </ItemGuard>
+    <ItemGuard roles={[EnumRoles.Admin, EnumRoles.Manager]}>
+      <LocationListPage />
+    </ItemGuard>
   ),
   children: [
     { path: "edit/:id", element: <NewLocationComponent editMode="detail" /> },

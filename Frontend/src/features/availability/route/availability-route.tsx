@@ -9,9 +9,9 @@ export const AvailabilityRoute = {
     {
       index: true,
       element: (
-        // <ItemGuard roles={[EnumRoles.Staff, EnumRoles.Manager, EnumRoles.SuperAdmin]}>
-        <AvailabilityPage />
-        // </ItemGuard>
+        <ItemGuard roles={[EnumRoles.Staff]}>
+          <AvailabilityPage />
+        </ItemGuard>
       ),
     },
     {

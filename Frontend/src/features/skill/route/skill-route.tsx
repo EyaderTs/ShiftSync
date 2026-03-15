@@ -7,9 +7,9 @@ import { EnumRoles } from "@/shared/constants/enum/app.enum";
 export const SkillRoute = {
   path: "skills",
   element: (
-    // <ItemGuard roles={[EnumRoles.SuperAdmin]}>
-    <SkillListPage />
-    // </ItemGuard>
+    <ItemGuard roles={[EnumRoles.Admin, EnumRoles.Manager]}>
+      <SkillListPage />
+    </ItemGuard>
   ),
   children: [
     { path: "edit/:id", element: <NewSkillComponent editMode="detail" /> },
