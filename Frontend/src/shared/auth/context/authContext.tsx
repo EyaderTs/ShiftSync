@@ -28,17 +28,14 @@ const AuthContext = React.createContext({
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
-  const [context, setContext] = useState({
-    user: userDefault,
-    authenticated: false,
-    login: Login,
-    logOut: logOut,
-  });
+  const [user, setUser] = useState<User>(userDefault);
+  const [authenticated, setAuthenticated] = useState(false);
 
   async function Login(account: Account) {
     const data = await userInfo(account);
     if (data?.userId) {
-      setContext({ ...context, user: data, authenticated: true });
+      setUser(data);
+      setAuthenticated(true);
       navigate("/");
     }
   }
@@ -46,25 +43,30 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   async function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userInfo");
-    setContext({ ...context, user: userDefault, authenticated: false });
+    setUser(userDefault);
+    setAuthenticated(false);
     navigate("/login");
   }
 
   useEffect(() => {
     async function init() {
       if ((await localStorage.userInfo) !== undefined) {
-        setContext({
-          ...context,
-          user: JSON.parse(await localStorage.userInfo),
-          authenticated: true,
-        });
+        setUser(JSON.parse(await localStorage.userInfo));
+        setAuthenticated(true);
       }
     }
     init();
   }, []);
 
+  const contextValue = {
+    user,
+    authenticated,
+    login: Login,
+    logOut: logOut,
+  };
+
   return (
-    <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 export default AuthContext;
