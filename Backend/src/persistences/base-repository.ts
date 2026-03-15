@@ -26,6 +26,14 @@ export class BaseRepository<T extends ObjectLiteral> {
     return await repository.save(data as DeepPartial<T>);
   }
 
+  static async saveBatch<T extends ObjectLiteral>(
+    Model: EntityTarget<T>,
+    data: (DeepPartial<T> | Partial<T>)[],
+  ): Promise<T[]> {
+    const repository: Repository<T> = await this.getRepository(Model);
+    return await repository.save(data as DeepPartial<T>[]);
+  }
+
   static async delete<T extends ObjectLiteral>(
     Model: EntityTarget<T>,
     id: string | number,
