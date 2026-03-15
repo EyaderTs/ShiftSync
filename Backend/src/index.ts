@@ -21,14 +21,16 @@ const app: Express = express();
 const port = process.env.PORT;
 // app.use(cors());
 app.use(cors({
-  origin: "*"
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use(Authenticate);
+// app.use(Authenticate);
 
 //import routs
 app.use("/api/users", userRoutes);
