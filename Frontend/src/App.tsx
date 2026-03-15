@@ -34,9 +34,9 @@ function App() {
       path: "/",
       element: (
         <AuthContextProvider>
-          <AuthGuard>
-            <Dashboard />
-          </AuthGuard>
+          {/* <AuthGuard> */}
+          <Dashboard />
+          {/* </AuthGuard> */}
         </AuthContextProvider>
       ),
       children: [
