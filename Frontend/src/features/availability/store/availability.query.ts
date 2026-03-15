@@ -205,7 +205,7 @@ const availabilityQuery = appApi.injectEndpoints({
                   if (data) {
                     draft.data = draft?.data?.map((availability) => {
                       if (availability.availabilityId === data.availabilityId)
-                        return { ...data, archivedAt: null };
+                        return { ...data, archivedAt: undefined };
                       else {
                         return availability;
                       }

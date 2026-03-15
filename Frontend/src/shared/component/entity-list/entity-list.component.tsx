@@ -180,9 +180,7 @@ export default function EntityList<T>(props: Props<T>) {
 
   const grantAccess = (roles: string[]) => {
     if (roles && roles?.length > 0) {
-      const isAuthorized = roles.some((r) =>
-        user?.userRoles?.map((role: any) => role?.role?.key)?.includes(r)
-      );
+      const isAuthorized = roles.includes(user?.role || '');
       if (!isAuthorized && user?.userId) {
         return false;
       } else {
@@ -225,7 +223,7 @@ export default function EntityList<T>(props: Props<T>) {
   }, []);
 
   useEffect(() => {
-    if (user?.userId && grantAccess([EnumRoles.SuperAdmin])) {
+    if (user?.userId && grantAccess([EnumRoles.Admin])) {
       dispatch(setUiState(true));
     }
   }, [user]);
