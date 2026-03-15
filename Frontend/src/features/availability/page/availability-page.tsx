@@ -151,14 +151,14 @@ export default function AvailabilityPage() {
       key: 'exceptionEndTimeUtc',
       render: (time: Date, record: StaffAvailability) => {
         const locationTimezone = record.location?.timeZone || 'UTC';
-        return (
+          return (
           <Space>
             <ClockCircleOutlined className="text-red-500" />
             <span className="font-medium">{dayjs(time).tz(locationTimezone).format('hh:mm A')}</span>
           </Space>
-        );
+          );
+        },
       },
-    },
     {
       title: 'Location',
       dataIndex: 'location',
@@ -210,7 +210,7 @@ export default function AvailabilityPage() {
                 <ClockCircleOutlined />
                 Weekly Pattern
               </span>
-            }
+        }
             key="1"
           >
             <div className="mb-4">
@@ -286,10 +286,10 @@ export default function AvailabilityPage() {
                 }}
                 className="modern-table"
               />
-            </div>
+      </div>
           </TabPane>
         </Tabs>
       </Card>
     </div>
   );
-}
+} 
