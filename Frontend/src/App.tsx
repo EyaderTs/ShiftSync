@@ -17,6 +17,7 @@ import { UserRoute } from "./features/user/route/user-route";
 
 import { SkillRoute } from "./features/skill/route/skill-route";
 import { DashboardRoute } from "./features/dashboard/route/dashboard-route";
+import { AvailabilityRoute } from "./features/availability/route/availability-route";
 // import { ReportRoute } from "./features/report/route/report-route";
 
 notification.config({
@@ -38,10 +39,12 @@ function App() {
         </AuthContextProvider>
       ),
       children: [
-        UserRoute,
-        LocationRoute,
-        SkillRoute,
         DashboardRoute,
+        UserRoute,
+        SkillRoute,
+        LocationRoute,
+        AvailabilityRoute,
+
         // ReportRoute,
         { path: "*", element: <NotFound /> },
       ],

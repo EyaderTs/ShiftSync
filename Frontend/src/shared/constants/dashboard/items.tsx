@@ -55,6 +55,16 @@ export const getMenuItems = (
         navigate("users");
       },
     },
+    {
+      key: "Availability",
+      icon: <MdOutlinePersonOutline size={iconSize} />,
+      label: "My Availability",
+      // roles: [EnumRoles.SuperAdmin],
+      onClick: () => {
+        navigate("availability");
+      },
+    },
+
     // {
     //   key: "User Management",
     //   icon: <MdOutlinePerson3 size={iconSize} />,

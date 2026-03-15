@@ -16,3 +16,29 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #585c5e;
 }
+
+/* Availability Page Custom Styles */
+.availability-tabs .ant-tabs-tab {
+  font-size: 16px;
+  padding: 12px 20px;
+}
+
+.availability-tabs .ant-tabs-tab-active {
+  font-weight: 600;
+}
+
+.modern-table .ant-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modern-table .ant-table-thead > tr > th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #334155;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.modern-table .ant-table-tbody > tr:hover > td {
+  background-color: #f1f5f9;
+}
