@@ -61,15 +61,15 @@ export class AvailabilityController {
 
   static async getAvailability(req: Request, res: Response) {
     try {
-      const id = req.params.id as string;
-      let includes: string[] = [];
-      
-      if (req.query.includes) {
-        includes = typeof req.query.includes === 'string' 
-          ? req.query.includes.split(',')
-          : (req.query.includes as string[]).map(String);
-      }
-      
+    const id = req.params.id as string;
+    let includes: string[] = [];
+    
+    if (req.query.includes) {
+      includes = typeof req.query.includes === 'string' 
+        ? req.query.includes.split(',')
+        : (req.query.includes as string[]).map(String);
+    }
+    
       const availability = await AvailabilityQuery.getAvailability(id, includes, true);
       res.status(200).json(availability);
     } catch (error: any) {
