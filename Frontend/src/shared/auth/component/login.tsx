@@ -70,14 +70,14 @@ export function Login() {
               <Input.Password placeholder="Password" />
             </Form.Item>
 
-            <div className="flex justify-between items-center mb-8">
-              <span className="text-sm text-gray-500">Did you forget your password?</span>
+            <div className="flex justify-between items-center mb-4">
+              {/* <span className="text-sm text-gray-500">Did you forget your password?</span>
               <NavLink
                 to="/reset-password"
                 className="text-sm font-normal  hover:text-primary"
               >
                 Forget Password
-              </NavLink>
+              </NavLink> */}
             </div>
 
             <Button

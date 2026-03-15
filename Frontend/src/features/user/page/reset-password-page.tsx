@@ -53,7 +53,7 @@ function OTPInput({ value, onChange }: { value: string; onChange: (value: string
   const handlePaste = (e: React.ClipboardEvent) => {
     e.preventDefault();
     const pastedData = e.clipboardData.getData("text").trim();
-    
+
     // Only process if it's 6 digits
     if (/^\d{6}$/.test(pastedData)) {
       const newOtp = pastedData.split("");
@@ -147,7 +147,7 @@ export default function ResetPasswordPage() {
         }}
       >
         <div className="text-white text-6xl font-bold z-10">
-          EDU Budget Ease
+          Shift Sync
         </div>
       </div>
 
