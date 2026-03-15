@@ -12,6 +12,8 @@ import authRoutes from "./routes/auth-route";
 import locationsRoutes from "./routes/locations-route";
 import skillRoutes from "./routes/skills-route";
 import dashboardRoutes from "./routes/dashboard-route";
+import availabilityRoutes from "./routes/availability-route";
+import shiftRoutes from "./routes/shift-route";
 
 dotenv.config();
 
@@ -30,6 +32,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/locations", locationsRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/availability", availabilityRoutes);
+app.use("/api/shifts", shiftRoutes);
 
 app.get("/api", (req: Request, res: Response) => {
   res.send("ShiftSync - Hello there");
