@@ -225,7 +225,7 @@ export default function NewUserComponent(props: Props) {
 
   useEffect(() => {
     if (editMode === "detail") {
-      getUser({ id: `${params.id}`, includes: ["userLocations"] }).then(
+      getUser({ id: `${params.id}`, includes: ["userLocations", "skill"] }).then(
         (response: any) => {
           if (response?.data) {
             // Handle phone number parsing
@@ -268,7 +268,7 @@ export default function NewUserComponent(props: Props) {
               email: response?.data?.email,
               phone: phoneToSet,
               role: response?.data?.role || "",
-              skillId: response?.data?.skillId,
+              skillId: response?.data?.skill?.skillId || response?.data?.skillId,
               userLocations: response?.data?.userLocations?.map(
                 (location: any) => location?.locationId
               ),
@@ -729,7 +729,7 @@ export default function NewUserComponent(props: Props) {
                               className="w-full"
                               showSearch
                               allowClear
-                              disabled={editMode === "detail"}
+                              // disabled={editMode === "detail"}
                               status={errors?.skillId ? "error" : ""}
                               {...field}
                               onSearch={debounce(
@@ -737,7 +737,7 @@ export default function NewUserComponent(props: Props) {
                                   setSkillCollection({
                                     ...skillCollection,
                                     search: value,
-                                    searchFrom: ["name", "code"],
+                                    searchFrom: ["name"],
                                   }),
                                 1000
                               )}
