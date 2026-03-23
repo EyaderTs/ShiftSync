@@ -20,17 +20,34 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 // app.use(cors());
+// app.use(cors({
+//   origin: "*",
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"]
+// }));
 app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: (origin:any, callback:any) => {
+    if (!origin) return callback(null, true);
+
+    if (
+      origin === "https://edubaseease.tech" ||
+      origin == "https://shift-sync-kappa.vercel.app"||
+      origin.startsWith("http://localhost") ||
+      origin.startsWith("http://127.0.0.1")
+    ) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true
 }));
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use(Authenticate);
+// app.use(Authenticate);
 
 //import routs
 app.use("/api/users", userRoutes);
